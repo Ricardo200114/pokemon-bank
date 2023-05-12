@@ -19,20 +19,20 @@
   <body>
     <h1 id="titulo-index">Depósitos a Tarjeta De Credito</h1>
     <div id="contenedor-depositos">
-      <label for=""><h2>Tarjeta</h2></label>
+      <label for=""><h2>Tarjeta De Credito</h2></label>
       <hr />
-      <input type="text" name="Cpropia" id="CP" value="0" />
+      <input type="text" name="TCREDITO" id="TC" value="0" />
       <hr />
       <h2>Monto a depositar</h2>
       <hr />
-      <input type="text" name="" id="MDpropia" placeholder="Cantidad" />
+      <input type="text" name="" id="MDTarjete" placeholder="Cantidad" />
       <hr />
 
       <input
         type="button"
         value="Realizar depósito a Cuenta Propia"
-        id="DCP1"
-        onclick="Formula()"
+        id="MDTarjeta"
+        onclick="DepositoTarjeta()"
       />
     </div>
     <a href="./depositos.html"

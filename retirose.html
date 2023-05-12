@@ -19,30 +19,27 @@
   <body>
     <h1 id="titulo-index">Retiro de Cuenta Corriente</h1>
     <div id="contenedor-depositos">
-      <form id="form-depo">
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label"
-            >Ingresa el monto a retirar</label
-          >
-          <input
-            type="email"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-          />
-        </div>
-        <a href=""
-          ><button id="boton-depo" type="button" class="btn btn-outline-light">
-            Aceptar
-          </button></a
-        >
-      </form>
+      <label for=""><h2>Retiro De Cuenta Corriente</h2></label>
+      <hr />
+      <input type="text" name="RCcorriente" id="RetiroCcorriente" value="500" />
+      <hr />
+      <h2>Monto a Retirar $</h2>
+      <hr />
+      <input type="text" name="" id="MDcorriente" placeholder="Cantidad" />
+      <hr />
+
+      <input
+        type="button"
+        value="Retiro de Cuenta Propia"
+        id="RCC"
+        onclick="RetiroCorriente()"
+      />
     </div>
-    <br /><br /><br /><br /><br /><br /><br /><br /><br />
     <a href="./retiros.html"
       ><button id="boton-depo" type="button" class="btn btn-outline-light">
         <span class="material-symbols-outlined"> close Salir </span>
       </button></a
     >
+    <script src="main.js"></script>
   </body>
 </html>
