@@ -1,35 +1,43 @@
-body{
-	background: radial-gradient(circle at center, #d295bf, #592e83);
-	text-shadow: 0px 0px 26px rgba(255,255,255,1);
+body {
+  background: radial-gradient(circle at center, #d295bf, #592e83);
+  text-shadow: 0px 0px 26px rgba(255, 255, 255, 1);
 }
 
-#titulo-index{
-	text-align: center;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding-top: 30px;
-	padding-bottom: 30px;
-	font-size: 500%;
-	color: azure;
+#titulo-index {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  font-size: 500%;
+  color: azure;
 }
 
-#contenedor-depositos{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+#contenedor-depositos {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
-#form-depo{
-    margin-top: 50px;
-    font-size: 35px;
-    color: white;
+#form-depo {
+  margin-top: 50px;
+  font-size: 35px;
+  color: white;
 }
 
-#boton-depo{
-    font-size: 30px;
-    margin-top: 20px;
-    height: 80px;
+#boton-depo {
+  font-size: 30px;
+  margin-top: 20px;
+  height: 80px;
 }
 
-
+.TituloP {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  font-size: 500%;
+  color: azure;
+}

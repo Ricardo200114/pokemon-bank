@@ -17,37 +17,29 @@
     <link rel="shortcut icon" href="img/icons8-pokeball-2-32.png" />
   </head>
   <body>
-    <h1 id="titulo-index">Depositos a Cuenta Propia</h1>
+    <h1 id="titulo-index">Depósitos a Cuenta Propia</h1>
     <div id="contenedor-depositos">
-      <form id="form-depo">
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label"
-            >Ingresa Numero de Cuenta</label
-          >
-          <input
-            type="email"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label"
-            >Ingresa el monto a depositar</label
-          >
-          <input type="text" class="form-control" id="exampleInputPassword1" />
-        </div>
-        <a href=""
-          ><button id="boton-depo" type="button" class="btn btn-outline-light">
-            Aceptar
-          </button></a
-        >
-      </form>
+      <label for=""><h2>Cuenta Propia</h2></label>
+      <hr />
+      <input type="text" name="Cpropia" id="CP" value="500" />
+      <hr />
+      <h2>Monto a depositar</h2>
+      <hr />
+      <input type="text" name="" id="MDpropia" placeholder="Cantidad" />
+      <hr />
+
+      <input
+        type="button"
+        value="Realizar depósito a Cuenta Propia"
+        id="DCP1"
+        onclick="Formula()"
+      />
     </div>
     <a href="./depositos.html"
       ><button id="boton-depo" type="button" class="btn btn-outline-light">
         <span class="material-symbols-outlined"> close Salir </span>
       </button></a
     >
+    <script src="main.js"></script>
   </body>
 </html>

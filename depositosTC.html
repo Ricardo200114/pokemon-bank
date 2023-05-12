@@ -17,32 +17,29 @@
     <link rel="shortcut icon" href="img/icons8-pokeball-2-32.png" />
   </head>
   <body>
-    <h1 id="titulo-index">Retiro de Tarjeta De credito</h1>
+    <h1 id="titulo-index">Depósitos a Tarjeta De Credito</h1>
     <div id="contenedor-depositos">
-      <form id="form-depo">
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label"
-            >Ingresa el numero de puntos a canjear</label
-          >
-          <input
-            type="email"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-          />
-        </div>
-        <a href=""
-          ><button id="boton-depo" type="button" class="btn btn-outline-light">
-            Aceptar
-          </button></a
-        >
-      </form>
+      <label for=""><h2>Tarjeta</h2></label>
+      <hr />
+      <input type="text" name="Cpropia" id="CP" value="0" />
+      <hr />
+      <h2>Monto a depositar</h2>
+      <hr />
+      <input type="text" name="" id="MDpropia" placeholder="Cantidad" />
+      <hr />
+
+      <input
+        type="button"
+        value="Realizar depósito a Cuenta Propia"
+        id="DCP1"
+        onclick="Formula()"
+      />
     </div>
-    <br /><br /><br /><br /><br /><br /><br /><br /><br />
-    <a href="./retiros.html"
+    <a href="./depositos.html"
       ><button id="boton-depo" type="button" class="btn btn-outline-light">
         <span class="material-symbols-outlined"> close Salir </span>
       </button></a
     >
+    <script src="main.js"></script>
   </body>
 </html>

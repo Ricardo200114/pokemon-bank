@@ -9,7 +9,7 @@
         <link rel="shortcut icon" href="img/icons8-pokeball-2-32.png">
     </head>
     <body>
-        <h1 id="titulo-index">Depositos a Prestamos Bancarios</h1>
+        <!--<h1 id="titulo-index">Depositos a Prestamos Bancarios</h1>
         <div id="contenedor-depositos">
             <form id="form-depo">
                 <div class="mb-3">
@@ -25,6 +25,31 @@
         </div>
         <a href="./depositos.html"><button id="boton-depo" type="button" class="btn btn-outline-light"><span class="material-symbols-outlined">
             close Salir
-            </span></button></a>
-    </body>
+            </span></button></a>-->
+    <body>
+    <h1 id="titulo-index">Prestamo</h1>
+    <div id="contenedor-depositos">
+      <label for=""><h2>Prestamo</h2></label>
+      <hr />
+      <input type="text" name="Cpropia" id="CP" value="500" />
+      <hr />
+      <h2>Monto a depositar</h2>
+      <hr />
+      <input type="text" name="" id="MDpropia" placeholder="Cantidad" />
+      <hr />
+
+      <input
+        type="button"
+        value="Realizar depósito a Cuenta Propia"
+        id="DCP1"
+        onclick="Prestamo1()"
+      />
+    </div>
+    <a href="./depositos.html"
+      ><button id="boton-depo" type="button" class="btn btn-outline-light">
+        <span class="material-symbols-outlined"> close Salir </span>
+      </button></a
+    >
+    <script src="Prestamo.js"></script>
+  </body>
 </html>
