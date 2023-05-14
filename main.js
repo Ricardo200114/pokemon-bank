@@ -90,7 +90,7 @@ function Prestamo1() {
   var saldoCuentaPropia = parseInt(document.getElementById("CP").value);
 
   // Realizar el depósito sumando el monto al saldo actual
-  var nuevoSaldo = saldoCuentaPropia + monto;
+  var nuevoSaldo = saldoCuentaPropia - monto;
 
   // Local Storage
   localStorage.setItem("nuevoSaldo", nuevoSaldo);

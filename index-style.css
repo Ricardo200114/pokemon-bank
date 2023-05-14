@@ -1,44 +1,53 @@
-body{
-	background: radial-gradient(circle at center, #d295bf, #592e83);
-	text-shadow: 0px 0px 26px rgba(255,255,255,1);
+body {
+  background: radial-gradient(circle at center, #d295bf, #592e83);
+  text-shadow: 0px 0px 26px rgba(255, 255, 255, 1);
 }
 
-#titulo-index{
-	text-align: center;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding-top: 70px;
-	padding-bottom: 100px;
-	font-size: 500%;
-	color: azure;
+#titulo-index {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 25px;
+  padding-bottom: 100px;
+  font-size: 500%;
+  color: azure;
 }
 
-#contenedor{
-	display: flex;
-	justify-content: space-between;
+.TituloP {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10px;
+  font-size: 35px;
+  color: azure;
+  margin: 2%;
 }
 
-#icon-index{
-	font-size: 90%;
+#contenedor {
+  display: flex;
+  justify-content: space-between;
 }
 
-#button-index{
-	font-size: 220%;
+#icon-index {
+  font-size: 90%;
 }
 
-#card{
-	border-radius: 1rem;
-}
-#card2{
-	background-color:rgb(223, 223, 223);
-	
-}
-#titulo-login{ letter-spacing: 1px;
-	
+#button-index {
+  font-size: 220%;
 }
 
-.enlases{
-color: #393f81;
+#card {
+  border-radius: 1rem;
+}
+#card2 {
+  background-color: rgb(223, 223, 223);
+}
+#titulo-login {
+  letter-spacing: 1px;
+}
 
+.enlases {
+  color: #393f81;
 }
