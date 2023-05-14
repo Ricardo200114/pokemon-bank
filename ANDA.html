@@ -14,39 +14,34 @@
   <body>
     <h1 id="titulo-index">ANDA</h1>
     <div id="contenedor-depositos">
-      <form id="form-depo">
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label"
-            >Ingresa Numero NPE</label
-          >
-          <input
-            type="email"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label"
-            >Ingresa el monto a pagar</label
-          >
-          <input
-            type="password"
-            class="form-control"
-            id="exampleInputPassword1"
-          />
-        </div>
-        <a href="depositosp.html"
-          ><button id="boton-depo" type="button" class="btn btn-outline-light">
-            Aceptar
-          </button></a
-        >
-      </form>
+      <label for=""><h2>Saldo actual</h2></label>
+      <hr />
+      <input type="text" name="Cpropia" id="CP" value="500" />
+      <hr />
+      <h2>Ingresa numero npe de factura de ANDA</h2>
+      <hr />
+      <input type="text" name="" id="NPE2" placeholder="NPE" />
+      <hr />
+      <h2>Ingresa monto a pagar </h2>
+      <hr />
+      <input type="text" name="" id="pago2" placeholder="Cantidad" />
+      <hr />
+
+      <input
+      type="button"
+      value="pagar "
+      id="DCP2"
+      onclick="ANDA()"
+    />
+      
+      
+      
     </div>
     <a href="index.html"
       ><button id="boton-depo" type="button" class="btn btn-outline-light">
         <span class="material-symbols-outlined"> close Salir </span>
       </button></a
     >
+    <script src="main.js"></script>
   </body>
 </html>

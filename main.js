@@ -189,3 +189,94 @@ function RetiroTarjeta() {
   // Mostrar un mensaje de éxito
   alert("Retiro realizado correctamente. Nuevo saldo: " + saldo);
 }
+//alvaro
+
+function caess() {
+ // Obtener el monto a pagar  y NPE
+ var depocaess = document.getElementById("pago1").value;
+ var NPECAESS= document.getElementById('NPE1').value;
+ // Convertir el monto a número
+ var pagocaess= parseInt(depocaess);
+ var NPE1=parseInt(NPECAESS);
+ 
+ // Obtener el saldo actual de la cuenta propia
+ var saldoCuentaPropia = parseInt(document.getElementById("CP").value);
+
+ // Realizar el pago  restando el monto al saldo actual
+ var nuevoSaldo = saldoCuentaPropia - pagocaess ;
+
+ // Local Storage
+ localStorage.setItem("nuevoSaldo", nuevoSaldo);
+
+ // Actualizar el valor del saldo en el campo de texto
+ document.getElementById("CP").value = nuevoSaldo;
+
+ // local Storage
+ var storedNuevoSaldo = localStorage.getItem("nuevoSaldo");
+ if (storedNuevoSaldo) {
+   document.getElementById("CP").value = storedNuevoSaldo;
+ }
+ if (isNaN(pagocaess) || nuevoSaldo<= 0) {
+  alert("usted no cuenta con suficiente saldo para realizar este pago");
+  return;
+}
+ // Mostrar un mensaje de éxito
+ alert(
+  "Se ha realizado un pago de $" +
+    pagocaess +
+    " al NPE:" +
+    NPE1 +  " .El saldo actual es de $" +
+    nuevoSaldo +
+    "."
+ );
+ 
+}
+function ANDA() {
+  // Obtener el monto a pagar  y NPE
+  var depoanda = document.getElementById("pago2").value;
+  var NPEanda= document.getElementById('NPE2').value;
+  // Convertir el monto a número
+  var pagoanda= parseInt(depoanda);
+  var NPE2=parseInt(NPEanda);
+  
+  // Obtener el saldo actual de la cuenta propia
+  var saldoCuentaPropia = parseInt(document.getElementById("CP").value);
+ 
+  // Realizar el pago  restando el monto al saldo actual
+  var nuevoSaldo = saldoCuentaPropia - pagoanda ;
+ 
+  // Local Storage
+  localStorage.setItem("nuevoSaldo", nuevoSaldo);
+ 
+  // Actualizar el valor del saldo en el campo de texto
+  document.getElementById("CP").value = nuevoSaldo;
+ 
+  // local Storage
+  var storedNuevoSaldo = localStorage.getItem("nuevoSaldo");
+  if (storedNuevoSaldo) {
+    document.getElementById("CP").value = storedNuevoSaldo;
+  }
+  if (isNaN(pagoanda) || nuevoSaldo<= 0) {
+   alert("usted no cuenta con suficiente saldo para realizar este pago");
+   return;
+ }
+  // Mostrar un mensaje de éxito
+  alert(
+   "Se ha realizado un pago de $"  +
+     pagoanda  +
+     " al NPE :" +
+     NPE2  +  " .El saldo actual es de $ " +
+     nuevoSaldo  +
+     "."
+  );
+ 
+  
+ }
+ 
+
+
+
+
+ 
+
+
