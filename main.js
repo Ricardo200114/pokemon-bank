@@ -18,6 +18,13 @@ function Formula() {
   // Obtener el monto a depositar
   var montoDeposito = document.getElementById("MDpropia").value;
 
+  // Validar si el monto de depósito es un número
+  if (isNaN(montoDeposito)) {
+    // Mostrar un mensaje de error
+    swal("Error", "Ingrese un monto válido", "error");
+    return;
+  }
+
   // Convertir el monto a número
   var monto = parseInt(montoDeposito);
 
@@ -26,27 +33,17 @@ function Formula() {
 
   // Realizar el depósito sumando el monto al saldo actual
   var nuevoSaldo = saldoCuentaPropia + monto;
-  // local storage
-  localStorage.setItem("nuevoSaldo", nuevoSaldo);
 
   // Actualizar el valor del saldo en el campo de texto
   document.getElementById("CP").value = nuevoSaldo;
 
   // local storage
-  var storedNuevoSaldo = localStorage.getItem("nuevoSaldo");
-  if (storedNuevoSaldo) {
-    document.getElementById("CP").value = storedNuevoSaldo;
-  }
+  localStorage.setItem("nuevoSaldo", nuevoSaldo);
 
   // Mostrar un mensaje de éxito
-  alert(
-    "Se ha realizado un depósito de $" +
-      monto +
-      " a la cuenta propia. El saldo actual es de $" +
-      nuevoSaldo +
-      "."
-  );
+  swal("¡Exitoso!", "Depósito recibido", "success");
 }
+
 
 function DepositoTarjeta() {
   // Obtener el valor de la tarjeta de crédito
@@ -57,7 +54,7 @@ function DepositoTarjeta() {
 
   // Verificar si el monto a depositar es válido
   if (isNaN(deposito) || deposito <= 0) {
-    alert("Ingrese un monto válido para el depósito.");
+    swal("Error", "Ingrese un monto válido", "error");
     return;
   }
   // Calcular el saldo después del depósito
@@ -76,12 +73,19 @@ function DepositoTarjeta() {
   }
 
   // Mostrar un mensaje de éxito
-  alert("Depósito realizado correctamente. Nuevo saldo: " + saldo);
+  swal("¡Exitoso!", "Depósito recibido", "success");
 }
 
 function Prestamo1() {
   // Obtener el monto a depositar
   var montoDeposito = document.getElementById("MDpropia").value;
+
+  // Validar si el monto de depósito es un número
+  if (isNaN(montoDeposito)) {
+    // Mostrar un mensaje de error
+    swal("¡Error!", "Ingrese un monto válido", "error");
+    return;
+  }
 
   // Convertir el monto a número
   var monto = parseInt(montoDeposito);
@@ -98,20 +102,18 @@ function Prestamo1() {
   // Actualizar el valor del saldo en el campo de texto
   document.getElementById("CP").value = nuevoSaldo;
 
-  // local Storage
+  // Local Storage
   var storedNuevoSaldo = localStorage.getItem("nuevoSaldo");
   if (storedNuevoSaldo) {
     document.getElementById("CP").value = storedNuevoSaldo;
   }
+
   // Mostrar un mensaje de éxito
-  alert(
-    "Se ha realizado un Abono de $" +
-      monto +
-      " al prestamo. El saldo actual es de $" +
-      nuevoSaldo +
-      "."
-  );
+  swal("¡Exitoso!", "Se ha realizado un Abono de $" + monto + " al préstamo. El saldo actual es de $" +
+  nuevoSaldo +
+  ".", "success");
 }
+
 ////// RETIROS ///////
 
 function RetiroCorriente() {
@@ -123,13 +125,13 @@ function RetiroCorriente() {
 
   // Verificar si el monto a depositar es válido
   if (isNaN(deposito) || deposito <= 0) {
-    alert("Ingrese un monto válido para el depósito.");
+    swal("¡Error!", "Ingrese un monto válido para el depósito.", "error");
     return;
   }
 
   // Verificar si el retiro es mayor o igual al monto a depositar
   if (retiro < deposito) {
-    alert("El monto de retiro debe ser igual o mayor al monto a depositar.");
+    swal("¡Alerta!", "El monto de retiro debe ser igual o mayor al monto a depositado.", "warning");
     return;
   }
 
@@ -149,7 +151,7 @@ function RetiroCorriente() {
   }
 
   // Mostrar un mensaje de éxito
-  alert("Retiro realizado correctamente. Nuevo saldo: " + saldo);
+  swal("¡Exitoso!", "Retiro realizado correctamente. Nuevo saldo: " + saldo, "success");
 }
 
 function RetiroTarjeta() {
@@ -161,13 +163,13 @@ function RetiroTarjeta() {
 
   // Verificar si el monto a retirar es válido
   if (isNaN(retiroCantidad) || retiroCantidad <= 0) {
-    alert("Ingrese un monto válido para el retiro.");
+    swal("¡Error!", "Ingrese un monto válido para el retiro.", "error");
     return;
   }
 
   // Verificar si el retiro es mayor o igual al monto a retirar
   if (retiro < retiroCantidad) {
-    alert("El monto de retiro debe ser igual o mayor al monto a retirar.");
+    swal("¡Alerta!", "El monto de retiro debe ser igual o mayor al monto a depositado.", "warning");
     return;
   }
 
@@ -187,7 +189,7 @@ function RetiroTarjeta() {
   }
 
   // Mostrar un mensaje de éxito
-  alert("Retiro realizado correctamente. Nuevo saldo: " + saldo);
+  swal("¡Exitoso!", "Retiro realizado correctamente. Nuevo saldo: " + saldo, "success");
 }
 //alvaro
 
@@ -217,19 +219,11 @@ function caess() {
    document.getElementById("CP").value = storedNuevoSaldo;
  }
  if (isNaN(pagocaess) || nuevoSaldo<= 0) {
-  alert("usted no cuenta con suficiente saldo para realizar este pago");
+  swal("¡Error!", "Usted no cuenta con suficiente saldo para realizar este pago", "error");
   return;
 }
  // Mostrar un mensaje de éxito
- alert(
-  "Se ha realizado un pago de $" +
-    pagocaess +
-    " al NPE:" +
-    NPE1 +  " .El saldo actual es de $" +
-    nuevoSaldo +
-    "."
- );
- 
+ swal("¡Exitoso!", "Se ha realizado un pago de $" + pagocaess + " al NPE:" + NPE1 +  " .El saldo actual es de $" + nuevoSaldo + ".", "success");
 }
 function ANDA() {
   // Obtener el monto a pagar  y NPE
@@ -245,6 +239,10 @@ function ANDA() {
   // Realizar el pago  restando el monto al saldo actual
   var nuevoSaldo = saldoCuentaPropia - pagoanda ;
  
+  if (isNaN(pagoanda) || nuevoSaldo<= 0) {
+    swal("¡Error!", "Usted no cuenta con suficiente saldo para realizar este pago", "error");
+   return;
+ }
   // Local Storage
   localStorage.setItem("nuevoSaldo", nuevoSaldo);
  
@@ -256,27 +254,9 @@ function ANDA() {
   if (storedNuevoSaldo) {
     document.getElementById("CP").value = storedNuevoSaldo;
   }
-  if (isNaN(pagoanda) || nuevoSaldo<= 0) {
-   alert("usted no cuenta con suficiente saldo para realizar este pago");
-   return;
- }
-  // Mostrar un mensaje de éxito
-  alert(
-   "Se ha realizado un pago de $"  +
-     pagoanda  +
-     " al NPE :" +
-     NPE2  +  " .El saldo actual es de $ " +
-     nuevoSaldo  +
-     "."
-  );
- 
   
+  // Mostrar un mensaje de éxito
+  swal("¡Exitoso!", "Se ha realizado un pago de $"  +  pagoanda  +
+  " al NPE :" +  NPE2  +  " .El saldo actual es de $ " +
+  nuevoSaldo  +  ".", "success");
  }
- 
-
-
-
-
- 
-
-
