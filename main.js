@@ -14,7 +14,23 @@ function login() {
   }
 }
 
-function Formula() {
+function generateReceipt(...fields) {
+  const { jsPDF } = window.jspdf;
+  var doc = new jsPDF();
+
+  doc.setFontSize(20);
+  doc.text("Banco Pokemón", 10, 10);
+
+  doc.setFontSize(10);
+
+  fields.forEach((field, index) => {
+    doc.text(field.toString(), 10, 20 + index * 10);
+  });
+
+  doc.save("recibo.pdf");
+}
+
+function DepositoCuentaPropia() {
   // Obtener el monto a depositar
   var montoDeposito = document.getElementById("MDpropia").value;
 
@@ -41,11 +57,18 @@ function Formula() {
   localStorage.setItem("nuevoSaldo", nuevoSaldo);
 
   // Mostrar un mensaje de éxito
-  swal("¡Exitoso!", "Depósito recibido", "success");
+  swal("¡Exitoso!", "Depósito recibido", "success").then((value) => {
+    generateReceipt(
+      "Referencia: 123456789",
+      "Depósito a cuenta propia",
+      `Monto: $${monto}`,
+      `Saldo: $${nuevoSaldo}`,
+      `Fecha: ${new Date().toLocaleDateString()}`
+    );
+  });
 }
 
-
-function DepositoTarjeta() {
+function DepositoTarjetaCredito() {
   // Obtener el valor de la tarjeta de crédito
   var tarjeta = parseFloat(document.getElementById("TC").value);
 
@@ -73,10 +96,18 @@ function DepositoTarjeta() {
   }
 
   // Mostrar un mensaje de éxito
-  swal("¡Exitoso!", "Depósito recibido", "success");
+  swal("¡Exitoso!", "Depósito recibido", "success").then((value) => {
+    generateReceipt(
+      "Referencia: 123456789",
+      "Depósito a tarjeta de crédito",
+      `Monto: $${deposito}`,
+      `Saldo: $${saldo}`,
+      `Fecha: ${new Date().toLocaleDateString()}`
+    );
+  });
 }
 
-function Prestamo1() {
+function DepositoPrestamoBancario() {
   // Obtener el monto a depositar
   var montoDeposito = document.getElementById("MDpropia").value;
 
@@ -109,9 +140,23 @@ function Prestamo1() {
   }
 
   // Mostrar un mensaje de éxito
-  swal("¡Exitoso!", "Se ha realizado un Abono de $" + monto + " al préstamo. El saldo actual es de $" +
-  nuevoSaldo +
-  ".", "success");
+  swal(
+    "¡Exitoso!",
+    "Se ha realizado un Abono de $" +
+      monto +
+      " al préstamo. El saldo actual es de $" +
+      nuevoSaldo +
+      ".",
+    "success"
+  ).then((value) => {
+    generateReceipt(
+      "Referencia: 123456789",
+      "Depósito a préstamo bancario",
+      `Monto: $${monto}`,
+      `Saldo: $${nuevoSaldo}`,
+      `Fecha: ${new Date().toLocaleDateString()}`
+    );
+  });
 }
 
 ////// RETIROS ///////
@@ -131,7 +176,11 @@ function RetiroCorriente() {
 
   // Verificar si el retiro es mayor o igual al monto a depositar
   if (retiro < deposito) {
-    swal("¡Alerta!", "El monto de retiro debe ser igual o mayor al monto a depositado.", "warning");
+    swal(
+      "¡Alerta!",
+      "El monto de retiro debe ser igual o mayor al monto a depositado.",
+      "warning"
+    );
     return;
   }
 
@@ -151,7 +200,19 @@ function RetiroCorriente() {
   }
 
   // Mostrar un mensaje de éxito
-  swal("¡Exitoso!", "Retiro realizado correctamente. Nuevo saldo: " + saldo, "success");
+  swal(
+    "¡Exitoso!",
+    "Retiro realizado correctamente. Nuevo saldo: " + saldo,
+    "success"
+  ).then((value) => {
+    generateReceipt(
+      "Referencia: 123456789",
+      "Retiro de cuenta corriente",
+      `Monto: $${deposito}`,
+      `Saldo: $${saldo}`,
+      `Fecha: ${new Date().toLocaleDateString()}`
+    );
+  });
 }
 
 function RetiroTarjeta() {
@@ -169,7 +230,11 @@ function RetiroTarjeta() {
 
   // Verificar si el retiro es mayor o igual al monto a retirar
   if (retiro < retiroCantidad) {
-    swal("¡Alerta!", "El monto de retiro debe ser igual o mayor al monto a depositado.", "warning");
+    swal(
+      "¡Alerta!",
+      "El monto de retiro debe ser igual o mayor al monto a depositado.",
+      "warning"
+    );
     return;
   }
 
@@ -189,74 +254,161 @@ function RetiroTarjeta() {
   }
 
   // Mostrar un mensaje de éxito
-  swal("¡Exitoso!", "Retiro realizado correctamente. Nuevo saldo: " + saldo, "success");
+  swal(
+    "¡Exitoso!",
+    "Retiro realizado correctamente. Nuevo saldo: " + saldo,
+    "success"
+  ).then((value) => {
+    generateReceipt(
+      "Referencia: 123456789",
+      "Retiro de tarjeta de crédito",
+      `Monto: $${retiroCantidad}`,
+      `Saldo: $${saldo}`,
+      `Fecha: ${new Date().toLocaleDateString()}`
+    );
+  });
 }
 //alvaro
 
-function caess() {
- // Obtener el monto a pagar  y NPE
- var depocaess = document.getElementById("pago1").value;
- var NPECAESS= document.getElementById('NPE1').value;
- // Convertir el monto a número
- var pagocaess= parseInt(depocaess);
- var NPE1=parseInt(NPECAESS);
- 
- // Obtener el saldo actual de la cuenta propia
- var saldoCuentaPropia = parseInt(document.getElementById("CP").value);
+function ServicioColegiatura() {
+  // Obtener el monto a pagar  y Cuenta
+  var numeroCuenta = document.getElementById("numeroCuenta").value;
+  var monto = document.getElementById("monto").value;
 
- // Realizar el pago  restando el monto al saldo actual
- var nuevoSaldo = saldoCuentaPropia - pagocaess ;
-
- // Local Storage
- localStorage.setItem("nuevoSaldo", nuevoSaldo);
-
- // Actualizar el valor del saldo en el campo de texto
- document.getElementById("CP").value = nuevoSaldo;
-
- // local Storage
- var storedNuevoSaldo = localStorage.getItem("nuevoSaldo");
- if (storedNuevoSaldo) {
-   document.getElementById("CP").value = storedNuevoSaldo;
- }
- if (isNaN(pagocaess) || nuevoSaldo<= 0) {
-  swal("¡Error!", "Usted no cuenta con suficiente saldo para realizar este pago", "error");
-  return;
+  swal("¡Exitoso!", "Pago realizado correctamente", "success").then((value) => {
+    generateReceipt(
+      "Referencia: 123456789",
+      "Pago de colegiatura",
+      `Cuenta: ${numeroCuenta}`,
+      `Monto: $${monto}`,
+      `Fecha: ${new Date().toLocaleDateString()}`
+    );
+  });
 }
- // Mostrar un mensaje de éxito
- swal("¡Exitoso!", "Se ha realizado un pago de $" + pagocaess + " al NPE:" + NPE1 +  " .El saldo actual es de $" + nuevoSaldo + ".", "success");
-}
-function ANDA() {
+
+function ServicioCaess() {
   // Obtener el monto a pagar  y NPE
-  var depoanda = document.getElementById("pago2").value;
-  var NPEanda= document.getElementById('NPE2').value;
+  var depocaess = document.getElementById("pago1").value;
+  var NPECAESS = document.getElementById("NPE1").value;
   // Convertir el monto a número
-  var pagoanda= parseInt(depoanda);
-  var NPE2=parseInt(NPEanda);
-  
+  var pagocaess = parseInt(depocaess);
+  var NPE1 = parseInt(NPECAESS);
+
   // Obtener el saldo actual de la cuenta propia
   var saldoCuentaPropia = parseInt(document.getElementById("CP").value);
- 
+
   // Realizar el pago  restando el monto al saldo actual
-  var nuevoSaldo = saldoCuentaPropia - pagoanda ;
- 
-  if (isNaN(pagoanda) || nuevoSaldo<= 0) {
-    swal("¡Error!", "Usted no cuenta con suficiente saldo para realizar este pago", "error");
-   return;
- }
+  var nuevoSaldo = saldoCuentaPropia - pagocaess;
+
   // Local Storage
   localStorage.setItem("nuevoSaldo", nuevoSaldo);
- 
+
   // Actualizar el valor del saldo en el campo de texto
   document.getElementById("CP").value = nuevoSaldo;
- 
+
   // local Storage
   var storedNuevoSaldo = localStorage.getItem("nuevoSaldo");
   if (storedNuevoSaldo) {
     document.getElementById("CP").value = storedNuevoSaldo;
   }
-  
+  if (isNaN(pagocaess) || nuevoSaldo <= 0) {
+    swal(
+      "¡Error!",
+      "Usted no cuenta con suficiente saldo para realizar este pago",
+      "error"
+    );
+    return;
+  }
   // Mostrar un mensaje de éxito
-  swal("¡Exitoso!", "Se ha realizado un pago de $"  +  pagoanda  +
-  " al NPE :" +  NPE2  +  " .El saldo actual es de $ " +
-  nuevoSaldo  +  ".", "success");
- }
+  swal(
+    "¡Exitoso!",
+    "Se ha realizado un pago de $" +
+      pagocaess +
+      " al NPE:" +
+      NPE1 +
+      " .El saldo actual es de $" +
+      nuevoSaldo +
+      ".",
+    "success"
+  ).then((value) => {
+    generateReceipt(
+      "Referencia: 123456789",
+      "Pago de CAESS",
+      `NPE: ${NPE1}`,
+      `Monto: $${pagocaess}`,
+      `Saldo: $${nuevoSaldo}`,
+      `Fecha: ${new Date().toLocaleDateString()}`
+    );
+  });
+}
+function ServicioANDA() {
+  // Obtener el monto a pagar  y NPE
+  var depoanda = document.getElementById("pago2").value;
+  var NPEanda = document.getElementById("NPE2").value;
+  // Convertir el monto a número
+  var pagoanda = parseInt(depoanda);
+  var NPE2 = parseInt(NPEanda);
+
+  // Obtener el saldo actual de la cuenta propia
+  var saldoCuentaPropia = parseInt(document.getElementById("CP").value);
+
+  // Realizar el pago  restando el monto al saldo actual
+  var nuevoSaldo = saldoCuentaPropia - pagoanda;
+
+  // Local Storage
+  localStorage.setItem("nuevoSaldo", nuevoSaldo);
+
+  // Actualizar el valor del saldo en el campo de texto
+  document.getElementById("CP").value = nuevoSaldo;
+
+  // local Storage
+  var storedNuevoSaldo = localStorage.getItem("nuevoSaldo");
+  if (storedNuevoSaldo) {
+    document.getElementById("CP").value = storedNuevoSaldo;
+  }
+  if (isNaN(pagoanda) || nuevoSaldo <= 0) {
+    swal(
+      "¡Error!",
+      "Usted no cuenta con suficiente saldo para realizar este pago",
+      "error"
+    );
+    return;
+  }
+  // Mostrar un mensaje de éxito
+  swal(
+    "¡Exitoso!",
+    "Se ha realizado un pago de $" +
+      pagoanda +
+      " al NPE :" +
+      NPE2 +
+      " .El saldo actual es de $ " +
+      nuevoSaldo +
+      ".",
+    "success"
+  ).then((value) => {
+    generateReceipt(
+      "Referencia: 123456789",
+      "Pago de ANDA",
+      `NPE: ${NPE2}`,
+      `Monto: $${pagoanda}`,
+      `Saldo: $${nuevoSaldo}`,
+      `Fecha: ${new Date().toLocaleDateString()}`
+    );
+  });
+}
+
+function ServicioClaro() {
+  // Obtener el monto a pagar  y Cuenta
+  var numeroCuenta = document.getElementById("phone").value;
+  var monto = document.getElementById("monto").value;
+
+  swal("¡Exitoso!", "Pago realizado correctamente", "success").then((value) => {
+    generateReceipt(
+      "Referencia: 123456789",
+      "Pago de servicio Claro",
+      `Cuenta: ${numeroCuenta}`,
+      `Monto: $${monto}`,
+      `Fecha: ${new Date().toLocaleDateString()}`
+    );
+  });
+}
